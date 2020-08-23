@@ -12,17 +12,19 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 @Module
 public class RetrofitModule {
 
     @Provides
-    @ApplicationScope
+    @Singleton
     APIInterface getApiInterface(Retrofit retroFit) {
         return retroFit.create(APIInterface.class);
     }
 
+
     @Provides
-    @ApplicationScope
+    @Singleton
     Retrofit getRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl("https://restcountries.eu/rest/v2/")
@@ -33,7 +35,7 @@ public class RetrofitModule {
     }
 
     @Provides
-    @ApplicationScope
+    @Singleton
     OkHttpClient getOkHttpCleint(HttpLoggingInterceptor httpLoggingInterceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
@@ -41,7 +43,7 @@ public class RetrofitModule {
     }
 
     @Provides
-    @ApplicationScope
+    @Singleton
     HttpLoggingInterceptor getHttpLoggingInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -2,6 +2,8 @@ package proba.vjezbanje.android.dagger2mvpretrofit2test.di.component;
 
 import android.content.Context;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 import proba.vjezbanje.android.dagger2mvpretrofit2test.MyApplication;
 import proba.vjezbanje.android.dagger2mvpretrofit2test.di.module.ContextModule;
@@ -10,7 +12,7 @@ import proba.vjezbanje.android.dagger2mvpretrofit2test.di.qualifier.ApplicationC
 import proba.vjezbanje.android.dagger2mvpretrofit2test.di.scopes.ApplicationScope;
 import proba.vjezbanje.android.dagger2mvpretrofit2test.retrofit.APIInterface;
 
-@ApplicationScope
+@Singleton
 @Component(modules = {ContextModule.class, RetrofitModule.class})
 public interface ApplicationComponent {
 
